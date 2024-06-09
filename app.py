@@ -60,7 +60,7 @@ def search_transaction():
     if request.method == "POST":
         filtered_transactions = []
         for transaction in transactions:
-            if transaction['amount'] > float(request.form['min_amount']) and transaction['amount'] < float(request.form['max_amount']):
+            if float(transaction['amount']) > float(request.form['min_amount']) and float(transaction['amount']) < float(request.form['max_amount']):
                 filtered_transactions.append(transaction)
         return render_template("transactions.html", transactions=filtered_transactions)
 
